@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
+import {StyleSheet, SafeAreaView} from 'react-native';
 import React from 'react';
 import Home from './Pages/Home';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.app} >
-     <Home/>
+    <SafeAreaView style={styles.app}>
+      <Home />
     </SafeAreaView>
   );
 }
@@ -13,6 +13,6 @@ export default function App() {
 const styles = StyleSheet.create({
   app: {
     backgroundColor: '#2B2A26',
-    height:'100%',
-  }
-})
+    height: '100%',
+  },
+});
