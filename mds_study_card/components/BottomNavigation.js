@@ -40,6 +40,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     backgroundColor: '#707070',
     padding: '3%',
+    paddingLeft: '8%',
+    paddingRight: '8%',
     borderRadius: 20,
     marginLeft: '10%',
     marginRight: '10%',
