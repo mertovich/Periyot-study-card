@@ -2,13 +2,17 @@ import {StyleSheet, SafeAreaView} from 'react-native';
 import React, {useState} from 'react';
 import Home from './Pages/Home';
 import BottomNavigation from './components/BottomNavigation';
+import List from './Pages/List';
 
 export default function App() {
-  const [NavigarionChoice, setNavigarionChoice] = useState(0);
+  const [NavigarionChoice, setNavigarionChoice] = useState(1);
 
   const navigationController = () => {
     if (NavigarionChoice === 0) {
       return <Home />;
+    }
+    if (NavigarionChoice === 1) {
+      return <List />;
     }
   };
 
