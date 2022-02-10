@@ -1,4 +1,4 @@
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import ListTopBar from '../components/ListTopBar';
 import WordList from '../components/WordList';

@@ -5,7 +5,7 @@ import BottomNavigation from './components/BottomNavigation';
 import List from './Pages/List';
 
 export default function App() {
-  const [NavigarionChoice, setNavigarionChoice] = useState(1);
+  const [NavigarionChoice, setNavigarionChoice] = useState(0);
 
   const navigationController = () => {
     if (NavigarionChoice === 0) {
