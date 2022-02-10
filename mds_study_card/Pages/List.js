@@ -1,19 +1,19 @@
 import {View, Text, ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
 import ListTopBar from '../components/ListTopBar';
+import WordList from '../components/WordList';
 
 const List = () => {
   return (
-    <View>
-      <ScrollView style={styles.scrollContainer}>
-        <ListTopBar />
-      </ScrollView>
+    <View style={styles.container}>
+      <ListTopBar />
+      <WordList />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollContainer: {
+  container: {
     height: '85%',
   },
 });

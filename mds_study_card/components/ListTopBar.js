@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   addButton: {
     marginTop: '1.5%',
-  }
+  },
 });
 
 export default ListTopBar;
