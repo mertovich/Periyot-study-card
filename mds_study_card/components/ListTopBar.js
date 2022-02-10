@@ -17,7 +17,7 @@ const ListTopBar = () => {
           placeholder="Search..."
           placeholderTextColor={'white'}
         />
-        <Pressable style={styles.addButton}>
+        <Pressable style={styles.addButton} onPress={() => alert('Add')}>
           <Image
             style={styles.image}
             source={require('../assets/Icon-ionic-add-circle-outline.png')}
