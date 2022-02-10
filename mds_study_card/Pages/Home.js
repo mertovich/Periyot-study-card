@@ -1,19 +1,23 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import React from 'react';
 import BottomNavigation from '../components/BottomNavigation';
+import HomeCard from '../components/HomeCard';
 
-export default function Home() {
+const Home = () => {
   return (
     <View>
-        <ScrollView style={styles.scrollConrainer} >
-            <Text>Home</Text>
-        </ScrollView>
-        <BottomNavigation/>
+      <ScrollView style={styles.scrollConrainer}>
+        <HomeCard />
+      </ScrollView>
+      <BottomNavigation />
     </View>
   );
-}
+};
+
 const styles = StyleSheet.create({
-    scrollConrainer:{
-        height: '85%',
-    },
-})
+  scrollConrainer: {
+    height: '85%',
+  },
+});
+
+export default Home;
