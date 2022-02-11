@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   },
   cardItemText: {
     color: '#FFFFFF',
+    fontSize: 18,
   },
 });
 
