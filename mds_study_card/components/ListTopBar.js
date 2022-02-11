@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 
-const ListTopBar = () => {
+const ListTopBar = props => {
   return (
     <View>
       <View style={styles.container}>
@@ -17,7 +17,7 @@ const ListTopBar = () => {
           placeholder="Search..."
           placeholderTextColor={'white'}
         />
-        <Pressable style={styles.addButton} onPress={() => alert('Add')}>
+        <Pressable style={styles.addButton} onPress={() => props.listAddPage()}>
           <Image
             style={styles.image}
             source={require('../assets/Icon-ionic-add-circle-outline.png')}

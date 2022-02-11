@@ -4,26 +4,38 @@ import Home from './Pages/Home';
 import BottomNavigation from './components/BottomNavigation';
 import List from './Pages/List';
 import ListAdd from './Pages/ListAdd';
+import Mix from './Pages/Mix';
 
 export default function App() {
-  const [NavigationChoice, setNavigationChoice] = useState(1);
+  const [NavigationChoice, setNavigationChoice] = useState(0);
 
-  const navigationController = () => {
-    if (NavigationChoice === 0) {
-      return <Home />;
-    }
-    if (NavigationChoice === 1) {
-      return <List />;
-    }
-    if (NavigationChoice === 3) {
-      return <ListAdd />;
-    }
+  const homePage = () => {
+    setNavigationChoice(0);
+  };
+
+  const listPage = () => {
+    setNavigationChoice(1);
+  };
+
+  const mixPage = () => {
+    setNavigationChoice(2);
+  };
+
+  const listAddPage = () => {
+    setNavigationChoice(3);
   };
 
   return (
     <SafeAreaView style={styles.app}>
-      {navigationController()}
-      <BottomNavigation />
+      {NavigationChoice === 0 ? <Home /> : null}
+      {NavigationChoice === 1 ? <List listAddPage={listAddPage} /> : null}
+      {NavigationChoice === 2 ? <Mix /> : null}
+      {NavigationChoice === 3 ? <ListAdd /> : null}
+      <BottomNavigation
+        homePage={homePage}
+        listPage={listPage}
+        mixPage={mixPage}
+      />
     </SafeAreaView>
   );
 }

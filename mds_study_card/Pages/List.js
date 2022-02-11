@@ -3,10 +3,10 @@ import React from 'react';
 import ListTopBar from '../components/ListTopBar';
 import WordList from '../components/WordList';
 
-const List = () => {
+const List = props => {
   return (
     <View style={styles.container}>
-      <ListTopBar />
+      <ListTopBar listAddPage={props.listAddPage} />
       <WordList />
     </View>
   );

@@ -1,39 +1,40 @@
 import {Text, View, StyleSheet, Pressable, Image} from 'react-native';
-import React, {Component} from 'react';
+import React from 'react';
 
-export default class BottomNavigation extends Component {
-  render() {
-    return (
-      <View style={styles.navComtainer}>
-        <Pressable
-          style={styles.navItemContainer}
-          onPress={() => alert('Home')}>
-          <Image
-            style={styles.firstIcon}
-            source={require('../assets/Icon-feather-home.png')}
-          />
-          <Text style={styles.navText}>HOME</Text>
-        </Pressable>
-        <Pressable
-          style={styles.navItemContainer}
-          onPress={() => alert('LIST')}>
-          <Image
-            style={styles.icon}
-            source={require('../assets/Icon-open-list.png')}
-          />
-          <Text style={styles.navText}>LIST</Text>
-        </Pressable>
-        <Pressable style={styles.navItemContainer} onPress={() => alert('MIX')}>
-          <Image
-            style={styles.icon}
-            source={require('../assets/Icon-simple-mixer.png')}
-          />
-          <Text style={styles.navText}>MIX</Text>
-        </Pressable>
-      </View>
-    );
-  }
-}
+const BottomNavigation = props => {
+  return (
+    <View style={styles.navComtainer}>
+      <Pressable
+        style={styles.navItemContainer}
+        onPress={() => props.homePage()}>
+        <Image
+          style={styles.firstIcon}
+          source={require('../assets/Icon-feather-home.png')}
+        />
+        <Text style={styles.navText}>HOME</Text>
+      </Pressable>
+      <Pressable
+        style={styles.navItemContainer}
+        onPress={() => props.listPage()}>
+        <Image
+          style={styles.icon}
+          source={require('../assets/Icon-open-list.png')}
+        />
+        <Text style={styles.navText}>LIST</Text>
+      </Pressable>
+      <Pressable
+        style={styles.navItemContainer}
+        onPress={() => props.mixPage()}>
+        <Image
+          style={styles.icon}
+          source={require('../assets/Icon-simple-mixer.png')}
+        />
+        <Text style={styles.navText}>MIX</Text>
+      </Pressable>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
   navComtainer: {
     flexDirection: 'row',
@@ -65,3 +66,5 @@ const styles = StyleSheet.create({
     width: 25,
   },
 });
+
+export default BottomNavigation;
