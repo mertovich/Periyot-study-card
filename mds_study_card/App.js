@@ -35,6 +35,7 @@ export default function App() {
         homePage={homePage}
         listPage={listPage}
         mixPage={mixPage}
+        NavigationChoice={NavigationChoice}
       />
     </SafeAreaView>
   );

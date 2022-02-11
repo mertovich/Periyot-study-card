@@ -5,7 +5,11 @@ const BottomNavigation = props => {
   return (
     <View style={styles.navComtainer}>
       <Pressable
-        style={styles.navItemContainer}
+        style={
+          props.NavigationChoice === 0
+            ? styles.navItemContainerActive
+            : styles.navItemContainer
+        }
         onPress={() => props.homePage()}>
         <Image
           style={styles.firstIcon}
@@ -14,7 +18,11 @@ const BottomNavigation = props => {
         <Text style={styles.navText}>HOME</Text>
       </Pressable>
       <Pressable
-        style={styles.navItemContainer}
+        style={
+          props.NavigationChoice === 1
+            ? styles.navItemContainerActive
+            : styles.navItemContainer
+        }
         onPress={() => props.listPage()}>
         <Image
           style={styles.icon}
@@ -23,7 +31,11 @@ const BottomNavigation = props => {
         <Text style={styles.navText}>LIST</Text>
       </Pressable>
       <Pressable
-        style={styles.navItemContainer}
+        style={
+          props.NavigationChoice === 2
+            ? styles.navItemContainerActive
+            : styles.navItemContainer
+        }
         onPress={() => props.mixPage()}>
         <Image
           style={styles.icon}
@@ -51,6 +63,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   navItemContainer: {
+    alignItems: 'center',
+    opacity: 0.5,
+  },
+  navItemContainerActive: {
     alignItems: 'center',
   },
   icon: {
