@@ -7,7 +7,7 @@ import ListAdd from './Pages/ListAdd';
 import Mix from './Pages/Mix';
 
 export default function App() {
-  const [NavigationChoice, setNavigationChoice] = useState(3);
+  const [NavigationChoice, setNavigationChoice] = useState(0);
 
   const homePage = () => {
     setNavigationChoice(0);
