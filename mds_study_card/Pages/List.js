@@ -35,8 +35,8 @@ const List = props => {
     } catch (e) {
       // saving error
     }
-    getWordList();
     setSearch('');
+    getWordList();
   };
 
   // Search Filter
