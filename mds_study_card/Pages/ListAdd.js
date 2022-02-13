@@ -35,9 +35,11 @@ const ListAdd = () => {
           word: Word,
           word2: Word2,
         };
-        const jsonValue = JSON.stringify(tmpWord);
+        let tmpList = WordList;
+        tmpList.push(tmpWord);
+        const jsonValue = JSON.stringify(tmpList);
         await AsyncStorage.setItem('WordList', jsonValue);
-        alert('Registration Successful')
+        alert('Registration Successful');
       } else {
         alert('Incomplete or incorrect information entry');
       }
