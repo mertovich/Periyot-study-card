@@ -53,7 +53,6 @@ const Home = () => {
   };
 
   // get total word
-
   const getTotalWord = async () => {
     let tmpList = [];
     try {

@@ -1,7 +1,50 @@
 import {View, StyleSheet, TextInput, Pressable, Text} from 'react-native';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ListAdd = () => {
+  const [WordList, setWordList] = useState([]);
+  const [Word, setword] = useState('');
+  const [Word2, setword2] = useState('');
+
+  useEffect(() => {
+    getWordList();
+  }, []);
+
+  // Get Word List
+  const getWordList = async () => {
+    let tmpList = [];
+    try {
+      const jsonValue = await AsyncStorage.getItem('WordList');
+      if (jsonValue != null) {
+        tmpList = JSON.parse(jsonValue);
+        setWordList(tmpList);
+      } else {
+        tmpList = [];
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+
+  // save word list
+  const saveWordList = async () => {
+    try {
+      if (Word !== '' && Word2 !== '') {
+        let tmpWord = {
+          word: Word,
+          word2: Word2,
+        };
+        const jsonValue = JSON.stringify(tmpWord);
+        await AsyncStorage.setItem('WordList', jsonValue);
+      } else {
+        alert('Incomplete or incorrect information entry');
+      }
+    } catch (e) {
+      // saving error
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -9,15 +52,17 @@ const ListAdd = () => {
           style={styles.textInput}
           placeholder="Word"
           placeholderTextColor={'white'}
+          onChangeText={text => setword(text)}
         />
         <TextInput
           style={styles.textInput}
           placeholder="Meaning of the word"
           placeholderTextColor={'white'}
+          onChangeText={text => setword2(text)}
         />
       </View>
       <View style={styles.buttonContainer}>
-        <Pressable style={styles.saveButton}>
+        <Pressable style={styles.saveButton} onPress={() => saveWordList()}>
           <Text style={styles.saveButtonText}>Save word</Text>
         </Pressable>
       </View>
