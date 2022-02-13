@@ -15,7 +15,7 @@ const ListTopBar = props => {
         <TextInput
           onChangeText={text => props.searchFilterFunction(text)}
           style={styles.textInput}
-          placeholder="Search..."
+          placeholder="Search Word..."
           placeholderTextColor={'white'}
           value={props.Search}
         />
