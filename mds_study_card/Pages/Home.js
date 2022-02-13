@@ -7,13 +7,11 @@ const Home = () => {
   const [LastScore, setLastScore] = useState(0);
   const [TotalWord, setTotalWord] = useState(0);
   const [HighScore, setHighScore] = useState(0);
-  const [LastLogin, setLastLogin] = useState(null);
 
   useEffect(() => {
     getLastScore();
     getTotalWord();
     getHighScore();
-    getLastLogin();
   }, []);
 
   // get last score
@@ -34,18 +32,6 @@ const Home = () => {
       const value = await AsyncStorage.getItem('HighScoreData');
       if (value !== null) {
         setHighScore(value);
-      }
-    } catch (e) {
-      // error reading value
-    }
-  };
-
-  // get last login
-  const getLastLogin = async () => {
-    try {
-      const value = await AsyncStorage.getItem('LastLogin');
-      if (value !== null) {
-        setLastLogin(value);
       }
     } catch (e) {
       // error reading value
@@ -75,7 +61,6 @@ const Home = () => {
           LastScore={LastScore}
           TotalWord={TotalWord}
           HighScore={HighScore}
-          LastLogin={LastLogin}
         />
       </ScrollView>
     </View>
