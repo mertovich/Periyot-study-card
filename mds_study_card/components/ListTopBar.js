@@ -6,38 +6,18 @@ import {
   Image,
   Pressable,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
 
 const ListTopBar = props => {
-  const [WordList, setWordList] = useState([]);
-
-  useEffect(() => {
-    getWordList();
-  }, []);
-
-  // Get Word List
-  const getWordList = async () => {
-    let tmpList = [];
-    try {
-      const jsonValue = await AsyncStorage.getItem('WordList');
-      if (jsonValue != null) {
-        tmpList = JSON.parse(jsonValue);
-        setWordList(tmpList);
-      } else {
-        tmpList = [];
-      }
-    } catch (e) {
-      // error reading value
-    }
-  };
   return (
     <View>
       <View style={styles.container}>
         <TextInput
+          onChangeText={text => props.searchFilterFunction(text)}
           style={styles.textInput}
           placeholder="Search..."
           placeholderTextColor={'white'}
+          value={props.Search}
         />
         <Pressable style={styles.addButton} onPress={() => props.listAddPage()}>
           <Image
