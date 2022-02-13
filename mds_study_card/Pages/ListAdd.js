@@ -47,7 +47,6 @@ const ListAdd = () => {
       // saving error
     }
   };
-
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>

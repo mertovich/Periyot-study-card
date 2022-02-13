@@ -19,10 +19,6 @@ const HomeCard = props => {
           <Text style={styles.cardItemText}>{props.HighScore}</Text>
           <Text style={styles.cardItemText}>High Score</Text>
         </View>
-        <View style={styles.cardItemContainer}>
-          <Text style={styles.cardItemText}>{props.lastLogin}</Text>
-          <Text style={styles.cardItemText}>Last Login</Text>
-        </View>
       </View>
     </View>
   );
