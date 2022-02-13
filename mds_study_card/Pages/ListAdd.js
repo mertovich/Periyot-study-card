@@ -39,6 +39,8 @@ const ListAdd = () => {
         tmpList.push(tmpWord);
         const jsonValue = JSON.stringify(tmpList);
         await AsyncStorage.setItem('WordList', jsonValue);
+        setword('');
+        setword2('');
         alert('Registration Successful');
       } else {
         alert('Incomplete or incorrect information entry');
@@ -55,12 +57,14 @@ const ListAdd = () => {
           placeholder="Word"
           placeholderTextColor={'white'}
           onChangeText={text => setword(text)}
+          value={Word}
         />
         <TextInput
           style={styles.textInput}
           placeholder="Meaning of the word"
           placeholderTextColor={'white'}
           onChangeText={text => setword2(text)}
+          value={Word2}
         />
       </View>
       <View style={styles.buttonContainer}>
