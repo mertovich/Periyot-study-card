@@ -2,10 +2,10 @@ import {View, Text, StyleSheet, FlatList, Image, Pressable} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Item = ({title}) => (
+const Item = ({title, deleteItem}) => (
   <View style={styles.item}>
     <Text style={styles.title}>{title}</Text>
-    <Pressable onPress={() => alert('delete')}>
+    <Pressable onPress={() => deleteItem(title)}>
       <Image
         style={styles.image}
         source={require('../assets/Icon-material-delete.png')}
@@ -33,7 +33,22 @@ const WordList = () => {
     }
   };
 
-  const renderItem = ({item}) => <Item title={item.word} />;
+  // Word List delete
+  const deleteItem = async title => {
+    let tmpList = WordList.filter(i => i.word !== title);
+    try {
+      const jsonValue = JSON.stringify(tmpList);
+      await AsyncStorage.setItem('WordList', jsonValue);
+    } catch (e) {
+      // saving error
+    }
+    setWordList(tmpList);
+  };
+
+
+  const renderItem = ({item}) => (
+    <Item title={item.word} deleteItem={deleteItem} />
+  );
   return (
     <View style={styles.container}>
       <FlatList
