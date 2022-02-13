@@ -1,6 +1,5 @@
 import {View, Text, StyleSheet, FlatList, Image, Pressable} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Item = ({item, deleteItem}) => (
   <View style={styles.item}>
@@ -16,42 +15,14 @@ const Item = ({item, deleteItem}) => (
   </View>
 );
 
-const WordList = () => {
-  const [WordList, setWordList] = useState([]);
-
-  useEffect(() => {
-    getWordList();
-  }, []);
-
-  // Get Word List
-  const getWordList = async () => {
-    try {
-      const jsonValue = await AsyncStorage.getItem('WordList');
-      if (jsonValue !== null) {
-        setWordList(JSON.parse(jsonValue));
-      }
-    } catch (e) {
-      // error reading value
-    }
-  };
-
-  // Word List delete
-  const deleteItem = async title => {
-    let tmpList = WordList.filter(i => i.word !== title);
-    try {
-      const jsonValue = JSON.stringify(tmpList);
-      await AsyncStorage.setItem('WordList', jsonValue);
-    } catch (e) {
-      // saving error
-    }
-    setWordList(tmpList);
-  };
-
-  const renderItem = ({item}) => <Item item={item} deleteItem={deleteItem} />;
+const WordList = props => {
+  const renderItem = ({item}) => (
+    <Item item={item} deleteItem={props.deleteItem} />
+  );
   return (
     <View style={styles.container}>
       <FlatList
-        data={WordList}
+        data={props.Search !== '' ? props.filteredDataSource : props.WordListe}
         renderItem={renderItem}
         keyExtractor={item => item.word}
       />
