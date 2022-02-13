@@ -1,26 +1,26 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 
-const HomeCard = () => {
+const HomeCard = props => {
   return (
     <View>
       <View style={styles.cardContainer}>
         <View style={styles.cardItemContainer}>
-          <Text style={styles.cardItemText}>0</Text>
+          <Text style={styles.cardItemText}>{props.LastScore}</Text>
           <Text style={styles.cardItemText}>Last Score</Text>
         </View>
         <View style={styles.cardItemContainer}>
-          <Text style={styles.cardItemText}>0</Text>
+          <Text style={styles.cardItemText}>{props.TotalWord}</Text>
           <Text style={styles.cardItemText}>Total Word</Text>
         </View>
       </View>
       <View style={styles.cardContainer}>
         <View style={styles.cardItemContainer}>
-          <Text style={styles.cardItemText}>0</Text>
+          <Text style={styles.cardItemText}>{props.HighScore}</Text>
           <Text style={styles.cardItemText}>High Score</Text>
         </View>
         <View style={styles.cardItemContainer}>
-          <Text style={styles.cardItemText}>0</Text>
+          <Text style={styles.cardItemText}>{props.lastLogin}</Text>
           <Text style={styles.cardItemText}>Last Login</Text>
         </View>
       </View>
