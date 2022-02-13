@@ -1,44 +1,6 @@
 import {View, Text, StyleSheet, FlatList, Image, Pressable} from 'react-native';
-import React from 'react';
-
-const DATA = [
-  {
-    id: '1',
-    title: 'Start',
-  },
-  {
-    id: '2',
-    title: 'Second Item',
-  },
-  {
-    id: '3',
-    title: 'Third Item',
-  },
-  {
-    id: '4',
-    title: 'First Item',
-  },
-  {
-    id: '5',
-    title: 'Second Item',
-  },
-  {
-    id: '6',
-    title: 'Third Item',
-  },
-  {
-    id: '7',
-    title: 'First Item',
-  },
-  {
-    id: '8',
-    title: 'Second Item',
-  },
-  {
-    id: '9',
-    title: 'end',
-  },
-];
+import React, {useState, useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Item = ({title}) => (
   <View style={styles.item}>
@@ -53,13 +15,31 @@ const Item = ({title}) => (
 );
 
 const WordList = () => {
-  const renderItem = ({item}) => <Item title={item.title} />;
+  const [WordList, setWordList] = useState([]);
+
+  useEffect(() => {
+    getWordList();
+  }, []);
+
+  // Get Word List
+  const getWordList = async () => {
+    try {
+      const jsonValue = await AsyncStorage.getItem('WordList');
+      if (jsonValue !== null) {
+        setWordList(JSON.parse(jsonValue));
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
+
+  const renderItem = ({item}) => <Item title={item.word} />;
   return (
     <View style={styles.container}>
       <FlatList
-        data={DATA}
+        data={WordList}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.word}
       />
     </View>
   );

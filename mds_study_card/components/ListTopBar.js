@@ -6,9 +6,31 @@ import {
   Image,
   Pressable,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ListTopBar = props => {
+  const [WordList, setWordList] = useState([]);
+
+  useEffect(() => {
+    getWordList();
+  }, []);
+
+  // Get Word List
+  const getWordList = async () => {
+    let tmpList = [];
+    try {
+      const jsonValue = await AsyncStorage.getItem('WordList');
+      if (jsonValue != null) {
+        tmpList = JSON.parse(jsonValue);
+        setWordList(tmpList);
+      } else {
+        tmpList = [];
+      }
+    } catch (e) {
+      // error reading value
+    }
+  };
   return (
     <View>
       <View style={styles.container}>
