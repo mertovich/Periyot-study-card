@@ -2,10 +2,12 @@ import {View, Text, StyleSheet, FlatList, Image, Pressable} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Item = ({title, deleteItem}) => (
+const Item = ({item, deleteItem}) => (
   <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-    <Pressable onPress={() => deleteItem(title)}>
+    <Text style={styles.title}>
+      {item.word} = {item.word2}
+    </Text>
+    <Pressable onPress={() => deleteItem(item.word)}>
       <Image
         style={styles.image}
         source={require('../assets/Icon-material-delete.png')}
@@ -45,10 +47,7 @@ const WordList = () => {
     setWordList(tmpList);
   };
 
-
-  const renderItem = ({item}) => (
-    <Item title={item.word} deleteItem={deleteItem} />
-  );
+  const renderItem = ({item}) => <Item item={item} deleteItem={deleteItem} />;
   return (
     <View style={styles.container}>
       <FlatList
@@ -77,8 +76,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   title: {
+    flex: 1,
     fontSize: 18,
     color: 'white',
+    marginRight: '2%',
   },
   image: {
     height: 30,
