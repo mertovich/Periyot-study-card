@@ -64,15 +64,17 @@ const Mix = () => {
   const checkWord = text => {
     setAnswer(text);
     if (WordControl) {
-      if (text.toLowerCase() === Word.word2.toLowerCase()) {
-        let score = Score;
-        score++;
-        setScore(score);
-        setAnswer('');
-        randomWord();
-        saveLastScore();
-        heighScoreCheck();
-      }
+      try {
+        if (text.toLowerCase() === Word.word2.toLowerCase()) {
+          let score = Score;
+          score++;
+          setScore(score);
+          setAnswer('');
+          randomWord();
+          saveLastScore();
+          heighScoreCheck();
+        }
+      } catch (error) {}
     }
   };
 
